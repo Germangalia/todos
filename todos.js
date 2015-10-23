@@ -1,6 +1,8 @@
 var EnterKey = 13;
 
 $.fn.isBound = function(type, fn) {
+
+
     var data = this.data('events')[type];
 
     if (data === undefined || data.length === 0) {
@@ -18,6 +20,13 @@ $(document).ready(function() {
           $currentListItem.remove();
         });
 
+        $('.item').dblclick(function(){
+            alert('abcde');
+            $('.item').hide();
+            $('.edit').show();
+            
+        });
+
         $('.toggle').on('click', function(e) {
           var $currentListItemLabel = $(this).closest('li').find('label');
 		  /*
@@ -33,7 +42,7 @@ $(document).ready(function() {
 		  }
 			});
 		}
-	
+
 	$todoList = $('#todo-list');
 	$('#new-todo').keypress(function(e) {
     if (e.which === EnterKey) {
@@ -44,7 +53,8 @@ $(document).ready(function() {
 				"<li>" +
           "<div class='view'>" +
             "<input class='toggle' type='checkbox'>" +
-            "<label data=''>" + " " + $('#new-todo').val() + "</label>" +
+            "<input class='edit' type='text' display='display:none' >" +
+            "<label class='item' data=''>" + " " + $('#new-todo').val() + "</label>" +
             "<a class='destroy'></a>" +
           "</div>" +
         "</li>";
